@@ -3,6 +3,7 @@ import random
 print("Let's play a game of Tic-Tac-Toe!\n")
 
 
+# Create the board
 def print_board(board):
     for i in range(0, len(board), 3):
         row = board[i:i + 3]
@@ -11,6 +12,7 @@ def print_board(board):
             print("-" * 9)
 
 
+# Check if a player has won
 def check_win(board):
     win_conditions = [(0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7),
                       (2, 5, 8), (0, 4, 8), (2, 4, 6)]
@@ -21,10 +23,12 @@ def check_win(board):
     return False
 
 
+# Check if the board is full
 def check_draw(board):
     return " " not in board
 
 
+# Get the player's move
 def make_move(board, player, position):
     if board[position] == " ":
         board[position] = player
@@ -32,12 +36,14 @@ def make_move(board, player, position):
     return False
 
 
+# Get the computer's move
 def computer_move(board):
     empty_positions = [i for i, x in enumerate(board) if x == " "]
     move = random.choice(empty_positions)
     board[move] = "O"
 
 
+# Main game loop
 def main():
     board = [" " for _ in range(9)]
     player1 = "X"
